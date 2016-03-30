@@ -1,45 +1,50 @@
 <!doctype html>
+
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
-  <title>uqlibrary-booking</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>uqlibrary-contacts test</title>
 
-  <script src="../../webcomponentsjs/webcomponents.min.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+  <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+  <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
 
-  <link rel="import" href="../uqlibrary-contacts.html">
+  <!-- Import the element to test -->
+  <link rel="import" href="../elements/uqlibrary-contacts.html">
+
 </head>
 <body>
 
-<uqlibrary-contacts unresolved></uqlibrary-contacts>
+<test-fixture id="element">
+  <template>
+    <uqlibrary-contacts auto-load="false"></uqlibrary-contacts>
+  </template>
+</test-fixture>
 
 <script>
-  window.addEventListener('polymer-ready', function () {
-    var uqlibraryContacts = document.querySelector('uqlibrary-contacts');
+  suite('<uqlibrary-element> tests', function () {
+    var element;
 
-    test('we have the element in the page', function (done) {
-      expect(uqlibraryContacts).to.not.be.null;
-      done();
+    setup(function () {
+      document.cookie = "UQLMockData=enabled";
+
+      element = fixture('element');
     });
 
-    test('we can display heading', function (done) {
-      //check card title
-      var cardTitle = uqlibraryContacts.shadowRoot.querySelector('div.cardTitle');
-      expect(cardTitle).to.not.be.null;
-      expect(cardTitle.textContent).to.equal('Library Contacts');
 
-      done();
-    });
+    test('It should load data', function (done) {
+      element.addEventListener('uqlibrary-contacts-loaded', function () {
+        setTimeout(function () {
+          var items = element.contacts;
 
-    test('we can display values', function (done) {
-      var paperShadow = uqlibraryContacts.shadowRoot.querySelector('paper-shadow');
-      expect(paperShadow).to.not.be.null;
-      var links = paperShadow.querySelectorAll('a.link');
-      expect(links).to.not.be.null;
-      expect(links.length).to.equal(3);
+          expect(items.length).to.be.equal(6);
 
-      done();
+          done();
+        }, 100);
+      });
+
+      element.$.contactsApi.get();
     });
   });
 </script>

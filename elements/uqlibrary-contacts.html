@@ -1,0 +1,100 @@
+<link rel="import" href="elements.html">
+
+<!--
+`<uqlibrary-papercut>` is a sample element of how UQ library apps should be structured
+
+Example:
+    <uqlibrary-papercut></uqlibrary-papercut>
+
+@demo
+
+@demo demo/index.html Demo of the Full view
+-->
+<dom-module id="uqlibrary-contacts">
+  <!-- All element styles -->
+  <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
+    :host {
+      @apply(--uql-app-host);
+    }
+
+    .container {
+      padding: 40px 10px 20px 10px;
+
+      @apply(--layout-horizontal);
+      @apply(--layout-center-justified);
+    }
+
+    paper-card {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    paper-icon-item {
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      color: var(--accent-color);
+    }
+
+    paper-card.chat iframe {
+      min-height: 350px;
+    }
+
+    paper-icon-item.disabled {
+      color: var(--secondary-color);
+      cursor: default;
+    }
+
+    paper-icon-item:first-of-type {
+      border-top: 1px solid var(--border-color);
+    }
+  </style>
+
+  <!-- Template -->
+  <template>
+    <uqlibrary-api-contacts id="contactsApi"></uqlibrary-api-contacts>
+    <uqlibrary-ga id="ga" appName="contacts"></uqlibrary-ga>
+
+    <div class="fit layout vertical">
+      <paper-header-panel class="flex">
+        <!-- Header -->
+        <paper-toolbar>
+          <!-- Required -->
+          <template is="dom-if" if="{{!standAlone}}">
+            <paper-icon-button icon="menu" on-tap="_toggleDrawerPanel" paper-drawer-toggle></paper-icon-button>
+          </template>
+          <div class="title uqlibrary-app-title">[[headerTitle]]</div>
+        </paper-toolbar>
+        <!-- Content -->
+        <div class="fit">
+          <div class="container">
+            <!-- Contacts -->
+            <paper-card elevation="2" heading="Library Contacts">
+              <template is="dom-repeat" items="[[contacts]]">
+                <paper-icon-item on-click="_linkClicked" class$="{{_disabledClass(item)}}">
+                  <iron-icon icon="[[item.icon]]" item-icon></iron-icon>
+                  [[item.label]]
+                  <!-- Offline message -->
+                  <template is="dom-if" if="{{item.isDisabled}}">
+                    (not available)
+                  </template>
+                </paper-icon-item>
+              </template>
+            </paper-card>
+          </div>
+          <div class="container">
+            <!-- Chat -->
+            <paper-card elevation="2" class="chat">
+              <iframe frameborder="0"
+                      src="//v2.libanswers.com/chati.php?iid=1193&hash=a917355c560adf4b0c802ffe1fdc92f6"
+                      scrolling="no"></iframe>
+            </paper-card>
+          </div>
+        </div>
+      </paper-header-panel>
+    </div>
+
+  </template>
+
+  <!-- Location of the script -->
+  <script src="uqlibrary-contacts.js"></script>
+</dom-module>

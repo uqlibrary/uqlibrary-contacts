@@ -1,17 +1,28 @@
 {
   "name": "uqlibrary-contacts",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "keywords": [
     "seed",
     "polymer",
     "web-components"
   ],
   "private": true,
-  "main": "uqlibrary-contacts.html",
+  "main": "elements/uqlibrary-contacts.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.5.5"
+    "iron-elements": "PolymerElements/iron-elements#*",
+    "paper-elements": "PolymerElements/paper-elements#*",
+    "iron-component-page": "PolymerElements/iron-component-page#*",
+    "polymer": "Polymer/polymer#^1.4.0",
+    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#master",
+    "uqlibrary-ga": "uqlibrary/uqlibrary-ga#*",
+    "uqlibrary-api": "uqlibrary/uqlibrary-api#polymer1.0"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#^1.6.1"
+    "web-component-tester": "^4.2.2",
+    "test-fixture": "PolymerElements/test-fixture#^1.1.0"
+  },
+  "resolutions": {
+    "polymer": "1.4.0",
+    "webcomponentsjs": "0.7.21"
   }
 }
