@@ -33,7 +33,7 @@
        */
       headerTitle: {
         type: String,
-        value: "Contact the Library"
+        value: "Ask Us"
       },
 			/**
 			 * Holds the user account
