@@ -14,7 +14,7 @@
     "iron-component-page": "PolymerElements/iron-component-page#*",
     "polymer": "Polymer/polymer#^1.4.0",
     "uqlibrary-styles": "uqlibrary/uqlibrary-styles#master",
-    "uqlibrary-ga": "uqlibrary/uqlibrary-ga#*",
+    "uqlibrary-ga": "uqlibrary/uqlibrary-ga#v1.0.0",
     "uqlibrary-api": "uqlibrary/uqlibrary-api#polymer1.0"
   },
   "devDependencies": {
