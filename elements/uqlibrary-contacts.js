@@ -29,6 +29,12 @@
         observer: '_checkDisabledStatus'
       },
       /**
+       * Summary link
+       */
+      summary: {
+        type: Object
+      },
+      /**
        * Title used in the header
        */
       headerTitle: {
@@ -67,6 +73,7 @@
 
 			this.$.contactsApi.addEventListener('uqlibrary-api-contacts-loaded', function(e) {
 				self.contacts = e.detail.items;
+        self.summary = e.detail.summary;
 			});
 
 			if (this.autoLoad){
