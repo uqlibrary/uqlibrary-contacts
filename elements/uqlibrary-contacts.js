@@ -111,7 +111,7 @@
           window.open(this._link(e.model.item), e.model.item.target, e.model.item.targetOptions || "");
         }
       } else {
-        window.location = this._link(e.model.item);
+        window.open(this._link(e.model.item), '_blank');
       }
     },
 		/**

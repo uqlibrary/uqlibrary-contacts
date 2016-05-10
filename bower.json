@@ -13,9 +13,9 @@
     "paper-elements": "PolymerElements/paper-elements#*",
     "iron-component-page": "PolymerElements/iron-component-page#*",
     "polymer": "Polymer/polymer#^1.4.0",
-    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#master",
-    "uqlibrary-ga": "uqlibrary/uqlibrary-ga#v1.0.0",
-    "uqlibrary-api": "uqlibrary/uqlibrary-api#polymer1.0"
+    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#v1.0.0",
+    "uqlibrary-ga": "uqlibrary/uqlibrary-ga#v1.0.3",
+    "uqlibrary-api": "uqlibrary/uqlibrary-api#v1.0.5"
   },
   "devDependencies": {
     "web-component-tester": "^4.2.2",
