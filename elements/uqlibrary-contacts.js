@@ -69,8 +69,6 @@
 		ready: function () {
 			var self = this;
 
-      this._checkChatStatus();
-
 			this.$.contactsApi.addEventListener('uqlibrary-api-contacts-loaded', function(e) {
 				self.contacts = e.detail.items;
         self.summary = e.detail.summary;
@@ -80,6 +78,28 @@
 				this.$.contactsApi.get();
 			}
 		},
+    /**  Processes successful chat status api response
+     * @param {Object} API call response
+     * */
+    _handleChatStatusResponse: function(response) {
+      if (document.cookie.indexOf("UQLMockData") >= 0) {
+        this._chatOnline = true;
+        return;
+      }
+      this._chatOnline = response.detail.data.online;
+    },
+
+    /**  Processes error chat status api response
+     * @param {Object} API call response
+     * */
+    _handleChatStatusError: function(response) {
+      if (document.cookie.indexOf("UQLMockData") >= 0) {
+        this._chatOnline = true;
+        return;
+      }
+
+      this.isChatOnline = false;
+    },
     /**
      * Returns the relevant link for this item
      * @param item
@@ -128,28 +148,6 @@
      */
     _isMobile: function () {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    },
-    /**
-     * Checks the chat status. CORS issues force a mock "true" if the mock cookie is set
-     * @private
-     */
-    _checkChatStatus: function () {
-      var self = this;
-
-      // Mock
-      if (document.cookie.indexOf("UQLMockData") >= 0) {
-        self._chatOnline = true;
-      } else {
-        var xobj = new XMLHttpRequest();
-        xobj.open('GET', this._chatStatusUrl, true);
-        xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            var json = JSON.parse(xobj.responseText);
-            self._chatOnline = json.online;
-          }
-        };
-        xobj.send(null);
-      }
     },
     /**
      * Called when the chat status has changed. Updates all items' disabled status

@@ -59,6 +59,14 @@ Example:
     <uqlibrary-api-contacts id="contactsApi"></uqlibrary-api-contacts>
     <uqlibrary-ga id="ga" app-name="contacts"></uqlibrary-ga>
 
+    <byutv-jsonp
+        auto
+        url="{{_chatStatusUrl}}"
+        params="{{timestamp}}"
+        on-response="_handleChatStatusResponse"
+        on-error="_handleChatStatusError"
+        debounce-duration="300"></byutv-jsonp>
+
     <div class="fit layout vertical">
       <paper-header-panel class="flex">
         <!-- Header -->
