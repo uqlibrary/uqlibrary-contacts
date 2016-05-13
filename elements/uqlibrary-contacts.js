@@ -26,7 +26,8 @@
       contacts: {
         type: Array,
         value: [],
-        observer: '_checkDisabledStatus'
+        observer: '_checkDisabledStatus',
+        notify: true
       },
       /**
        * Summary link
@@ -86,6 +87,7 @@
         this._chatOnline = true;
         return;
       }
+
       this._chatOnline = response.detail.data.online;
     },
 
@@ -98,7 +100,7 @@
         return;
       }
 
-      this.isChatOnline = false;
+      this._chatOnline = false;
     },
     /**
      * Returns the relevant link for this item
@@ -156,12 +158,13 @@
     _checkDisabledStatus: function () {
       for (var i = 0; i < this.contacts.length; i++) {
         this.contacts[i].isDisabled = (this.contacts[i].disabled == "chat-offline" && !this._chatOnline);
+        this.notifyPath('contacts.'+i+'.isDisabled', this.contacts[i].isDisabled);
       }
       
       this.fire("uqlibrary-contacts-loaded");
     },
-    _disabledClass: function (item) {
-      return (item.isDisabled ? "disabled" : "");
+    _disabledClass: function (disabled) {
+      return (disabled ? "disabled" : "");
     }
 	})
 })();

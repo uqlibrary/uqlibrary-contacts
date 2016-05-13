@@ -83,7 +83,7 @@ Example:
             <!-- Contacts -->
             <paper-card elevation="1" heading="Ask Us">
               <template is="dom-repeat" items="[[contacts]]">
-                <paper-icon-item on-click="_linkClicked" class$="{{_disabledClass(item)}}">
+                <paper-icon-item on-click="_linkClicked" class$="{{_disabledClass(item.isDisabled)}}">
                   <iron-icon icon="[[item.icon]]" item-icon></iron-icon>
                   [[item.label]]
                   <!-- Offline message -->
