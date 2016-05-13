@@ -36,6 +36,11 @@ Example:
       line-height: 48px;
     }
 
+    paper-item {
+      border-bottom: 1px solid var(--border-color);
+      color: var(--accent-color);
+    }
+
     paper-icon-item.disabled {
       color: var(--secondary-color);
       cursor: default;
@@ -51,6 +56,12 @@ Example:
 
     .card-actions {
       text-align: center;
+    }
+
+    paper-spinner {
+      width: 24px;
+      height: 24px;
+      margin-right: 32px;
     }
   </style>
 
@@ -83,14 +94,25 @@ Example:
             <!-- Contacts -->
             <paper-card elevation="1" heading="Ask Us">
               <template is="dom-repeat" items="[[contacts]]">
-                <paper-icon-item on-click="_linkClicked" class$="{{_disabledClass(item.isDisabled)}}">
-                  <iron-icon icon="[[item.icon]]" item-icon></iron-icon>
-                  [[item.label]]
-                  <!-- Offline message -->
-                  <template is="dom-if" if="{{item.isDisabled}}">
-                    (not available)
-                  </template>
-                </paper-icon-item>
+
+                <template is="dom-if" if="[[!item.isLoading]]">
+                  <paper-icon-item on-click="_linkClicked" class$="{{_disabledClass(item.isDisabled)}}">
+                    <iron-icon icon="[[item.icon]]" item-icon></iron-icon>
+                    [[item.label]]
+                    <!-- Offline message -->
+                    <template is="dom-if" if="{{item.isDisabled}}">
+                      (not available)
+                    </template>
+                  </paper-icon-item>
+                </template>
+
+                <template is="dom-if" if="[[item.isLoading]]">
+                  <paper-item>
+                    <paper-spinner active></paper-spinner>
+                    Loading...
+                  </paper-item>
+                </template>
+
               </template>
             </paper-card>
           </div>
