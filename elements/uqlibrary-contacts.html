@@ -96,14 +96,16 @@ Example:
               <template is="dom-repeat" items="[[contacts]]">
 
                 <template is="dom-if" if="[[!item.isLoading]]">
-                  <paper-icon-item on-click="_linkClicked" class$="{{_disabledClass(item.isDisabled)}}">
-                    <iron-icon icon="[[item.icon]]" item-icon></iron-icon>
-                    [[item.label]]
-                    <!-- Offline message -->
-                    <template is="dom-if" if="{{item.isDisabled}}">
-                      (not available)
-                    </template>
-                  </paper-icon-item>
+                  <a on-click="_linkClicked" href$="[[_link(item, item.isDisabled)]]" target$="[[item.target]]">
+                    <paper-icon-item on-click="_linkClicked" class$="{{_disabledClass(item.isDisabled)}}">
+                      <iron-icon icon="[[item.icon]]" item-icon></iron-icon>
+                      [[item.label]]
+                      <!-- Offline message -->
+                      <template is="dom-if" if="{{item.isDisabled}}">
+                        (not available)
+                      </template>
+                    </paper-icon-item>
+                  </a>
                 </template>
 
                 <template is="dom-if" if="[[item.isLoading]]">

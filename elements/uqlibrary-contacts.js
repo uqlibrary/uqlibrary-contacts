@@ -116,11 +116,15 @@
     /**
      * Returns the relevant link for this item
      * @param item
+     * @param disabled
      * @returns {*}
      * @private
      */
-    _link: function (item) {
-      if (item.linkMobile && this._isMobile()) {
+    _link: function (item, disabled) {
+      if (disabled || item.label == 'Chat') {
+        // Chat is handled in the actual On Click event
+        return "javascript: void(0)";
+      } else if (item.linkMobile && this._isMobile()) {
         return item.linkMobile;
       } else {
         return item.link;
@@ -136,15 +140,13 @@
       this.$.ga.addEvent('Click', e.model.item.link);
 
       // Check if this item has a custom "target" attribute
-      if (e.model.item.target) {
+      if (e.model.item.label == 'Chat') {
         if (this._isMobile()) {
           // On mobile we ignore the targetOptions
-          window.open(this._link(e.model.item), e.model.item.target);
+          window.open(this._link(e.model.item), '_blank');
         } else {
           window.open(this._link(e.model.item), e.model.item.target, e.model.item.targetOptions || "");
         }
-      } else {
-        window.open(this._link(e.model.item), '_blank');
       }
     },
 		/**
@@ -168,8 +170,15 @@
      */
     _checkDisabledStatus: function () {
       for (var i = 0; i < this.contacts.length; i++) {
+
         this.contacts[i].isDisabled = (this.contacts[i].disabled == "chat-offline" && !this._chatOnline);
         this.notifyPath('contacts.'+i+'.isDisabled', this.contacts[i].isDisabled);
+
+        if (!this.contacts[i].target) {
+          if (this.contacts[i].label != 'Email' && (this.contacts[i].label != 'Phone' || !this._isMobile())) {
+            this.contacts[i].target = '_blank';
+          }
+        }
 
         if (this.contacts[i].disabled == 'chat-offline') {
           this.contacts[i].isLoading = !this._chatStatusLoaded;
