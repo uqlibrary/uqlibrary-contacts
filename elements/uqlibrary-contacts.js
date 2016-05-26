@@ -42,15 +42,15 @@
         type: String,
         value: "Ask Us"
       },
-			/**
-			 * Holds the user account
-			 */
-			_account: {
-				type: Object,
-				value: {
-					hasSession: false
-				}
-			},
+      /**
+       * Holds the user account
+       */
+      _account: {
+		type: Object,
+		value: {
+          hasSession: false
+		}
+      },
       /**
        * Whether the chat is online
        */
@@ -80,7 +80,7 @@
 
 			this.$.contactsApi.addEventListener('uqlibrary-api-contacts-loaded', function(e) {
 				self.contacts = e.detail.items;
-        self.summary = e.detail.summary;
+                self.summary = e.detail.summary;
 			});
 
 			if (this.autoLoad){
@@ -113,6 +113,7 @@
 
       this._chatOnline = false;
     },
+
     /**
      * Returns the relevant link for this item
      * @param item
@@ -136,26 +137,27 @@
      */
     _linkClicked: function (e) {
       if (e.model.item.isDisabled) { return; }
+      var item = e.model.item;
 
-      this.$.ga.addEvent('Click', e.model.item.link);
+      this.$.ga.addEvent('Click', item.link);
 
       // Check if this item has a custom "target" attribute
-      if (e.model.item.label == 'Chat') {
+      if (item.label == 'Chat') {
         if (this._isMobile()) {
           // On mobile we ignore the targetOptions
-          window.open(this._link(e.model.item), '_blank');
+          window.open(item.linkMobile, '_blank');
         } else {
-          window.open(this._link(e.model.item), e.model.item.target, e.model.item.targetOptions || "");
+          window.open(item.link, item.target, item.targetOptions || "");
         }
       }
     },
-		/**
-		 * Toggles the drawer panel of the main UQL app
-		 * @private
-		 */
-		_toggleDrawerPanel: function () {
-			this.fire('uqlibrary-toggle-drawer');
-		},
+    /**
+	 * Toggles the drawer panel of the main UQL app
+	 * @private
+	 */
+	_toggleDrawerPanel: function () {
+      this.fire('uqlibrary-toggle-drawer');
+	},
     /**
      * Returns whether the user is on a mobile device
      * @returns {boolean}
