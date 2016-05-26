@@ -145,7 +145,7 @@
       if (item.label == 'Chat') {
         if (this._isMobile()) {
           // On mobile we ignore the targetOptions
-          window.open(item.linkMobile, '_blank');
+          window.open(item.link, '_blank');
         } else {
           window.open(item.link, item.target, item.targetOptions || "");
         }
