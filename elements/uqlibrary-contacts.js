@@ -40,7 +40,7 @@
        */
       headerTitle: {
         type: String,
-        value: "Ask Us"
+        value: "Ask us"
       },
       /**
        * Holds the user account
