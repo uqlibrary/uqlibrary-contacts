@@ -40,31 +40,15 @@
        */
       headerTitle: {
         type: String,
-        value: "Ask us"
+        value: 'Ask us'
       },
-      /**
-       * Holds the user account
-       */
-      _account: {
-		type: Object,
-		value: {
-          hasSession: false
-		}
-      },
-      /**
-       * Whether the chat is online
-       */
+     /**
+      * Whether the chat is online
+      */
       _chatOnline: {
         type: Boolean,
         value: false,
         observer: '_checkDisabledStatus'
-      },
-      /**
-       * Url to check the status of the chat
-       */
-      _chatStatusUrl: {
-        type: String,
-        value: "https://api2.libanswers.com/1.0/chat/widgets/status/1871"
       },
       /**
        * Whether the chat status has been loaded
@@ -80,38 +64,32 @@
 
 			this.$.contactsApi.addEventListener('uqlibrary-api-contacts-loaded', function(e) {
 				self.contacts = e.detail.items;
-                self.summary = e.detail.summary;
+        self.summary = e.detail.summary;
 			});
 
-			if (this.autoLoad){
-				this.$.contactsApi.get();
-			}
-		},
+      this.$.chatStatusApi.addEventListener('uqlibrary-api-chat-status-loaded', function(e) {
+        self._handleChatStatusResponse(e);
+      });
+
+      if (this.autoLoad){
+        this.$.contactsApi.get();
+        this.$.chatStatusApi.get();
+      }
+    },
     /**  Processes successful chat status api response
      * @param {Object} API call response
      * */
     _handleChatStatusResponse: function(response) {
       this._chatStatusLoaded = true;
 
-      if (document.cookie.indexOf("UQLMockData") >= 0) {
-        this._chatOnline = true;
-        return;
-      }
-      this._chatOnline = response.detail.data.online;
-    },
-
-    /**  Processes error chat status api response
-     * @param {Object} API call response
-     * */
-    _handleChatStatusError: function(response) {
-      this._chatStatusLoaded = true;
-
-      if (document.cookie.indexOf("UQLMockData") >= 0) {
+      if (document.cookie.indexOf('UQLMockData') >= 0) {
         this._chatOnline = true;
         return;
       }
 
-      this._chatOnline = false;
+      if (response.detail && response.detail.hasOwnProperty('online')) {
+        this._chatOnline = response.detail.online;
+      }
     },
 
     /**
@@ -122,7 +100,7 @@
      * @private
      */
     _link: function (item, disabled) {
-      if (disabled || item.label == 'Chat') {
+      if (disabled || item.label === 'Chat') {
         // Chat is handled in the actual On Click event
         return "javascript: void(0)";
       } else if (item.linkMobile && this._isMobile()) {
@@ -142,7 +120,7 @@
       this.$.ga.addEvent('Click', item.link);
 
       // Check if this item has a custom "target" attribute
-      if (item.label == 'Chat') {
+      if (item.label === 'Chat') {
         if (this._isMobile()) {
           // On mobile we ignore the targetOptions
           window.open(item.link, '_blank');
@@ -173,27 +151,27 @@
     _checkDisabledStatus: function () {
       for (var i = 0; i < this.contacts.length; i++) {
 
-        this.contacts[i].isDisabled = (this.contacts[i].disabled == "chat-offline" && !this._chatOnline);
+        this.contacts[i].isDisabled = (this.contacts[i].disabled === 'chat-offline' && !this._chatOnline);
         this.notifyPath('contacts.'+i+'.isDisabled', this.contacts[i].isDisabled);
 
         if (!this.contacts[i].target) {
-          if (this.contacts[i].label != 'Email' && (this.contacts[i].label != 'Phone' || !this._isMobile())) {
+          if (this.contacts[i].label !== 'Email' && (this.contacts[i].label !== 'Phone' || !this._isMobile())) {
             this.contacts[i].target = '_blank';
           }
         }
 
-        if (this.contacts[i].disabled == 'chat-offline') {
+        if (this.contacts[i].disabled === 'chat-offline') {
           this.contacts[i].isLoading = !this._chatStatusLoaded;
           this.notifyPath('contacts.'+i+'.isLoading', this.contacts[i].isLoading);
         } else {
           this.contacts[i].isLoading = false;
         }
       }
-      
-      this.fire("uqlibrary-contacts-loaded");
+
+      this.fire('uqlibrary-contacts-loaded');
     },
     _disabledClass: function (disabled) {
-      return (disabled ? "disabled" : "");
+      return (disabled ? 'disabled' : '');
     }
-	})
+	});
 })();
