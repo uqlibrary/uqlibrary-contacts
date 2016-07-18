@@ -23,6 +23,7 @@
   },
   "resolutions": {
     "polymer": "1.4.0",
-    "webcomponentsjs": "0.7.21"
+    "webcomponentsjs": "0.7.21",
+    "uqlibrary-api": "^v1.2.4"
   }
 }
