@@ -2,17 +2,17 @@
  * By Jan-Willem Wisgerhof <j.wisgerhof@uq.edu.au>
  */
 (function () {
-	Polymer({
-		is: 'uqlibrary-contacts',
-		properties: {
-			/**
-			 * Required. Whether the app should start in standalone mode or not.
-			 * @type Boolean
-			 */
-			standAlone: {
-				type: Object,
-				value: true
-			},
+  Polymer({
+    is: 'uqlibrary-contacts',
+    properties: {
+      /**
+       * Required. Whether the app should start in standalone mode or not.
+       * @type Boolean
+       */
+      standAlone: {
+        type: Object,
+        value: true
+      },
       /**
        * @type Boolean
        */
@@ -42,9 +42,9 @@
         type: String,
         value: 'Ask us'
       },
-     /**
-      * Whether the chat is online
-      */
+      /**
+       * Whether the chat is online
+       */
       _chatOnline: {
         type: Boolean,
         value: false,
@@ -58,14 +58,14 @@
         value: false,
         notify: true
       }
-		},
-		ready: function () {
-			var self = this;
+    },
+    ready: function () {
+      var self = this;
 
-			this.$.contactsApi.addEventListener('uqlibrary-api-contacts-loaded', function(e) {
-				self.contacts = e.detail.items;
+      this.$.contactsApi.addEventListener('uqlibrary-api-contacts-loaded', function(e) {
+        self.contacts = e.detail.items;
         self.summary = e.detail.summary;
-			});
+      });
 
       this.$.chatStatusApi.addEventListener('uqlibrary-api-chat-status-loaded', function(e) {
         self._handleChatStatusResponse(e);
@@ -81,11 +81,6 @@
      * */
     _handleChatStatusResponse: function(response) {
       this._chatStatusLoaded = true;
-
-      if (document.cookie.indexOf('UQLMockData') >= 0) {
-        this._chatOnline = true;
-        return;
-      }
 
       if (response.detail && response.detail.hasOwnProperty('online')) {
         this._chatOnline = response.detail.online;
@@ -130,12 +125,12 @@
       }
     },
     /**
-	 * Toggles the drawer panel of the main UQL app
-	 * @private
-	 */
-	_toggleDrawerPanel: function () {
+     * Toggles the drawer panel of the main UQL app
+     * @private
+     */
+    _toggleDrawerPanel: function () {
       this.fire('uqlibrary-toggle-drawer');
-	},
+    },
     /**
      * Returns whether the user is on a mobile device
      * @returns {boolean}
@@ -173,5 +168,5 @@
     _disabledClass: function (disabled) {
       return (disabled ? 'disabled' : '');
     }
-	});
+  });
 })();
