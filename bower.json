@@ -20,10 +20,5 @@
   "devDependencies": {
     "web-component-tester": "^4.2.2",
     "test-fixture": "PolymerElements/test-fixture#^1.1.0"
-  },
-  "resolutions": {
-    "polymer": "1.4.0",
-    "webcomponentsjs": "0.7.21",
-    "uqlibrary-api": "^v1.2.4"
   }
 }
