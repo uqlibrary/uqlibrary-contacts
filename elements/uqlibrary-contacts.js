@@ -120,7 +120,7 @@
           // On mobile we ignore the targetOptions
           window.open(item.link, '_blank');
         } else {
-          window.open(item.link, item.target, item.targetOptions || "");
+          window.open(item.link, item.target, '_blank');
         }
       }
     },
@@ -148,12 +148,6 @@
 
         this.contacts[i].isDisabled = (this.contacts[i].disabled === 'chat-offline' && !this._chatOnline);
         this.notifyPath('contacts.'+i+'.isDisabled', this.contacts[i].isDisabled);
-
-        if (!this.contacts[i].target) {
-          if (this.contacts[i].label !== 'Email' && (this.contacts[i].label !== 'Phone' || !this._isMobile())) {
-            this.contacts[i].target = '_blank';
-          }
-        }
 
         if (this.contacts[i].disabled === 'chat-offline') {
           this.contacts[i].isLoading = !this._chatStatusLoaded;
