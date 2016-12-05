@@ -2,6 +2,7 @@
   "name": "uqlibrary-contacts",
   "version": "1.0.0",
   "description": "Web component to display contacts",
+  "license": "MIT",
   "main": "index.html",
   "directories": {
     "test": "test"
@@ -23,9 +24,9 @@
     "url": "https://github.com/uqlibrary/uqlibrary-contacts/issues"
   },
   "devDependencies": {
-    "web-component-tester": "~4.2.2",
+    "web-component-tester": "~5.0.0",
     "gulp": "~3.9.1",
-    "browser-sync": "~2.12.5"
+    "browser-sync": "~2.18.2"
   },
   "dependencies": {
     "bower": "~1.7.9"
