@@ -11,62 +11,62 @@ Example:
 @demo demo/index.html Demo of the Full view
 -->
 <dom-module id="uqlibrary-contacts">
-  <!-- All element styles -->
-  <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
-    :host {
-      @apply(--uql-app-host);
-    }
-
-    .container {
-      padding: 16px;
-
-      @apply(--layout-horizontal);
-      @apply(--layout-center-justified);
-    }
-
-    paper-card {
-      max-width: 800px;
-      width: 100%;
-    }
-
-    paper-icon-item {
-      border-bottom: 1px solid var(--border-color);
-      cursor: pointer;
-      color: var(--accent-color);
-      line-height: 48px;
-    }
-
-    paper-item {
-      border-bottom: 1px solid var(--border-color);
-      color: var(--accent-color);
-    }
-
-    paper-icon-item.disabled {
-      color: var(--secondary-color);
-      cursor: default;
-    }
-
-    paper-icon-item:last-of-type {
-      border: none;
-    }
-
-    paper-icon-item:first-of-type {
-      border-top: 1px solid var(--border-color);
-    }
-
-    .card-actions {
-      text-align: center;
-    }
-
-    paper-spinner {
-      width: 24px;
-      height: 24px;
-      margin-right: 32px;
-    }
-  </style>
-
   <!-- Template -->
   <template>
+    <!-- All element styles -->
+    <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
+      :host {
+        @apply(--uql-app-host);
+      }
+
+      .container {
+        padding: 16px;
+
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+      }
+
+      paper-card {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      paper-icon-item {
+        border-bottom: 1px solid var(--border-color);
+        cursor: pointer;
+        color: var(--accent-color);
+        line-height: 48px;
+      }
+
+      paper-item {
+        border-bottom: 1px solid var(--border-color);
+        color: var(--accent-color);
+      }
+
+      paper-icon-item.disabled {
+        color: var(--secondary-color);
+        cursor: default;
+      }
+
+      paper-icon-item:last-of-type {
+        border: none;
+      }
+
+      paper-icon-item:first-of-type {
+        border-top: 1px solid var(--border-color);
+      }
+
+      .card-actions {
+        text-align: center;
+      }
+
+      paper-spinner {
+        width: 24px;
+        height: 24px;
+        margin-right: 32px;
+      }
+    </style>
+
     <uqlibrary-api-contacts id="contactsApi"></uqlibrary-api-contacts>
     <uqlibrary-api-chat-status id="chatStatusApi"></uqlibrary-api-chat-status>
     <uqlibrary-ga id="ga" app-name="contacts"></uqlibrary-ga>
