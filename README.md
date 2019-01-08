@@ -1,19 +1,27 @@
-#uqlibrary-contacts
-[ ![Codeship Status for uqlibrary/uqlibrary-contacts](https://codeship.com/projects/8d5d7470-bcc1-0133-4df8-129a4e5cf2b4/status?branch=master)](https://codeship.com/projects/136355)
+# uqlibrary-contacts
+
+[![Codeship Status for uqlibrary/uqlibrary-contacts](https://codeship.com/projects/8d5d7470-bcc1-0133-4df8-129a4e5cf2b4/status?branch=master)](https://codeship.com/projects/136355)
 [![Dependency Status](https://david-dm.org/uqlibrary/uqlibrary-contacts.svg)](https://david-dm.org/uqlibrary/uqlibrary-contacts)
 [![Dev Dependency Status](https://david-dm.org/uqlibrary/uqlibrary-contacts/dev-status.svg)](https://david-dm.org/uqlibrary/uqlibrary-contacts?type=dev)
 
-Master branch: Polymer v1.0
+Default branch: **polymer1.0**
 
-Full new application is [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/)
+Used in [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/)
 
-List of deprecated branches: 
+## Dev Setup
 
-* ~~master~~
-* ~~uat~~
-* ~~staging~~
-* ~~production~~
+Java 8 is required, as are `node` and `npm`. Check `package.json` for required versions.
 
-Code in these branches was a part of a set of MyLibrary applications implemented with Google Polymer v0.5 at app.library.uq.edu.au/v1/contact.
+```bash
+npm install -g gulp-cli web-component-tester bower
+npm install
+bower install
+```
 
-Production branch deployment is currently just a redirect to live MyLibrary. To be removed after a reasonable time.
+## Development
+
+Run `gulp serve` to start a live-reloading web server and display the page in the default browser.
+
+## Testing
+
+Run `npm test` to run local tests with `web-component-tester`. You can also run `wct` directly.
