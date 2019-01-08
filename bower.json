@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-contacts",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "keywords": [
     "seed",
     "polymer",
@@ -12,12 +12,16 @@
     "iron-elements": "PolymerElements/iron-elements#*",
     "paper-elements": "PolymerElements/paper-elements#*",
     "iron-component-page": "PolymerElements/iron-component-page#*",
-    "polymer": "Polymer/polymer#^1.4.0",
-    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#v1.0.0",
-    "uqlibrary-ga": "uqlibrary/uqlibrary-ga#v1.0.3",
-    "uqlibrary-api": "uqlibrary/uqlibrary-api#v1.3.8"
+    "polymer": "Polymer/polymer#^1.9.3",
+    "uqlibrary-styles": "uqlibrary/uqlibrary-styles",
+    "uqlibrary-ga": "uqlibrary/uqlibrary-ga",
+    "uqlibrary-api": "uqlibrary/uqlibrary-api"
   },
   "devDependencies": {
-    "test-fixture": "PolymerElements/test-fixture#^1.1.0"
+    "web-component-tester": "*",
+    "test-fixture": "PolymerElements/test-fixture#^1.1.2"
+  },
+  "resolutions": {
+    "test-fixture": "^1.1.2"
   }
 }
