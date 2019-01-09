@@ -6,7 +6,9 @@
 
 Default branch: **polymer1.0**
 
-Used in [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/)
+Used in [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/).
+
+Demo is [here](https://uqlibrary.github.io/uqlibrary-contacts/uqlibrary-contacts/demo/).
 
 ## Dev Setup
 
@@ -21,6 +23,8 @@ bower install
 ## Development
 
 Run `gulp serve` to start a live-reloading web server and display the page in the default browser.
+
+GitHub pages should be updated after every commit to `polymer1.0` branch by running `bin/generate-gh-pages.sh`
 
 ## Testing
 
