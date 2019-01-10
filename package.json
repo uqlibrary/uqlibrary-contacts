@@ -28,7 +28,6 @@
     "browser-sync": "^2.26.3",
     "chai": "^4.2.0",
     "gulp": "^4.0.0",
-    "require-dir": "^1.2.0",
     "web-component-tester": "*"
   },
   "engines": {
