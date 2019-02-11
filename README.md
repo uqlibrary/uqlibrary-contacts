@@ -8,14 +8,14 @@ Default branch: **polymer1.0**
 
 Used in [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/).
 
-Demo is [here](https://uqlibrary.github.io/uqlibrary-contacts/uqlibrary-contacts/demo/).
+ The full documentation and demo can be found in [GitHub Pages](https://uqlibrary.github.io/uqlibrary-contacts/uqlibrary-contacts/uqlibrary-contacts/).
 
 ## Dev Setup
 
 Java 8 is required, as are `node` and `npm`. Check `package.json` for required versions.
 
 ```bash
-npm install -g gulp-cli web-component-tester bower
+npm install -g gulp-cli web-component-tester bower polymer-cli
 npm install
 bower install
 ```
@@ -24,7 +24,10 @@ bower install
 
 Run `gulp serve` to start a live-reloading web server and display the page in the default browser.
 
-GitHub pages should be updated after every commit to `polymer1.0` branch by running `bin/generate-gh-pages.sh`
+* Please adhere to the Polymer code style guide provided at [Style Guide](http://polymerelements.github.io/style-guide/).
+* Colors and common styles are imported (bower install) from [uqlibrary-styles](http://github.com/uqlibrary/uqlibrary-styles).
+* The docs can be viewed locally by running `npm start`. Use the second URL from the command output.
+* GitHub pages should be updated after every commit to `polymer1.0` branch by running `bin/generate-gh-pages.sh`
 
 ## Testing
 
