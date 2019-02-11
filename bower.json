@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-contacts",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "keywords": [
     "seed",
     "polymer",
@@ -12,7 +12,7 @@
     "iron-elements": "PolymerElements/iron-elements#*",
     "paper-elements": "PolymerElements/paper-elements#*",
     "iron-component-page": "PolymerElements/iron-component-page#*",
-    "polymer": "Polymer/polymer#^1.9.3",
+    "polymer": "Polymer/polymer#^1.11.3",
     "uqlibrary-styles": "uqlibrary/uqlibrary-styles",
     "uqlibrary-ga": "uqlibrary/uqlibrary-ga",
     "uqlibrary-api": "uqlibrary/uqlibrary-api"
