@@ -8,7 +8,7 @@ Default branch: **polymer1.0**
 
 Used in [uqlibrary-mylibrary repo](https://github.com/uqlibrary/uqlibrary-mylibrary/).
 
- The full documentation and demo can be found in [GitHub Pages](https://uqlibrary.github.io/uqlibrary-contacts/uqlibrary-contacts/uqlibrary-contacts/).
+ The full documentation and demo can be found in [GitHub Pages](https://uqlibrary.github.io/uqlibrary-contacts/uqlibrary-contacts/).
 
 ## Dev Setup
 
