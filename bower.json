@@ -1,11 +1,7 @@
 {
   "name": "uqlibrary-contacts",
-  "version": "1.2.4",
-  "keywords": [
-    "seed",
-    "polymer",
-    "web-components"
-  ],
+  "version": "1.2.6",
+  "keywords": ["seed", "polymer", "web-components"],
   "private": true,
   "main": "elements/uqlibrary-contacts.html",
   "dependencies": {
