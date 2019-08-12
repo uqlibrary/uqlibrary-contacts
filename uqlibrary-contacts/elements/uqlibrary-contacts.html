@@ -1,0 +1,129 @@
+<link rel="import" href="elements.html">
+
+<!--
+`<uqlibrary-contacts>` is used to display a contact links block
+
+Example:
+
+    <uqlibrary-contacts></uqlibrary-contacts>
+
+@demo
+-->
+<dom-module id="uqlibrary-contacts">
+  <!-- Template -->
+  <template>
+    <!-- All element styles -->
+    <style is="custom-style" include="iron-flex iron-flex-alignment common-styles">
+      :host {
+        @apply --uql-app-host;
+      }
+
+      .container {
+        padding: 16px;
+
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+      }
+
+      paper-card {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      paper-icon-item {
+        border-bottom: 1px solid var(--border-color);
+        cursor: pointer;
+        color: var(--accent-color);
+        line-height: 48px;
+      }
+
+      paper-item {
+        border-bottom: 1px solid var(--border-color);
+        color: var(--accent-color);
+      }
+
+      paper-icon-item.disabled {
+        color: var(--secondary-color);
+        cursor: default;
+      }
+
+      paper-icon-item:last-of-type {
+        border: none;
+      }
+
+      paper-icon-item:first-of-type {
+        border-top: 1px solid var(--border-color);
+      }
+
+      .card-actions {
+        text-align: center;
+      }
+
+      paper-spinner {
+        width: 24px;
+        height: 24px;
+        margin-right: 32px;
+      }
+    </style>
+
+    <uqlibrary-api-contacts id="contactsApi"></uqlibrary-api-contacts>
+    <uqlibrary-api-chat-status id="chatStatusApi"></uqlibrary-api-chat-status>
+    <uqlibrary-ga id="ga" app-name="contacts"></uqlibrary-ga>
+
+    <div class="fit layout vertical">
+      <paper-header-panel class="flex">
+        <!-- Header -->
+        <paper-toolbar>
+          <!-- Required -->
+          <template is="dom-if" if="{{!standAlone}}">
+            <paper-icon-button icon="menu" on-tap="_toggleDrawerPanel" paper-drawer-toggle></paper-icon-button>
+          </template>
+          <div class="title uqlibrary-app-title">[[headerTitle]]</div>
+        </paper-toolbar>
+        <!-- Content -->
+        <div class="fit">
+          <div class="container">
+            <!-- Contacts -->
+            <paper-card elevation="1" heading="[[headerTitle]]">
+              <template is="dom-repeat" items="[[contacts]]">
+
+                <template is="dom-if" if="[[!item.isLoading]]">
+                  <a on-click="_linkClicked" href$="[[_link(item, item.isDisabled)]]" target$="[[item.target]]">
+                    <paper-icon-item class$="{{_disabledClass(item.isDisabled)}}">
+                      <iron-icon icon="[[item.icon]]" item-icon></iron-icon>
+                      [[item.label]]
+                      <!-- Offline message -->
+                      <template is="dom-if" if="{{item.isDisabled}}">
+                        (not available)
+                      </template>
+                    </paper-icon-item>
+                  </a>
+                </template>
+
+                <template is="dom-if" if="[[item.isLoading]]">
+                  <paper-item>
+                    <paper-spinner active></paper-spinner>
+                    Loading...
+                  </paper-item>
+                </template>
+
+              </template>
+            </paper-card>
+          </div>
+        </div>
+      </paper-header-panel>
+      <!-- Bottom footer -->
+      <paper-toolbar class="uqlibrary-app-footer right">
+        <paper-button class="button-colored-accent"
+                      title="More ways to contact us"
+                      aria-label="More ways to contact us" tabindex="-1">
+          <a href$="[[summary.link]]">[[summary.label]]</a>
+        </paper-button>
+      </paper-toolbar>
+    </div>
+
+  </template>
+
+  <!-- Location of the script -->
+  <script src="uqlibrary-contacts.js"></script>
+</dom-module>

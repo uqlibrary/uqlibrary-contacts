@@ -1,0 +1,40 @@
+{
+  "name": "uqlibrary-contacts",
+  "version": "1.2.6",
+  "description": "Web component to display contacts",
+  "license": "MIT",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "polymer test",
+    "start": "polymer serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uqlibrary/uqlibrary-contacts.git"
+  },
+  "keywords": [
+    "contacts",
+    "uq",
+    "library"
+  ],
+  "author": "j.wisgerhof@library.uq.edu.au",
+  "bugs": {
+    "url": "https://github.com/uqlibrary/uqlibrary-contacts/issues"
+  },
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "bower": "^1.8.8",
+    "browser-sync": "^2.26.7",
+    "chai": "^4.2.0",
+    "gulp": "^4.0.2",
+    "web-component-tester": "*"
+  },
+  "engines": {
+    "npm": "^6",
+    "node": "11.10.1"
+  },
+  "engine-strict": true
+}
