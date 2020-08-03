@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-contacts",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Web component to display contacts",
   "license": "MIT",
   "main": "index.html",
