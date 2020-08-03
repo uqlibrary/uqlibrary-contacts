@@ -32,21 +32,6 @@
       element = fixture('element');
     });
 
-    test('It should load data', function (done) {
-      element.addEventListener('uqlibrary-contacts-loaded', function () {
-        setTimeout(function () {
-          var items = element.contacts;
-
-          expect(items.length).to.be.equal(6);
-          expect(element._chatOnline).to.be.false;
-
-          done();
-        }, 100);
-      });
-
-      element.$.contactsApi.get();
-    });
-
     test('It should load chat status', function (done) {
       element.addEventListener('uqlibrary-contacts-loaded', function () {
         setTimeout(function () {
